@@ -261,9 +261,22 @@
                 .panel-brand{display:none;}
                 .panel-form{padding:44px 30px;}
             }
+            #secc-message{
+                position:fixed;
+                top:20px;
+                z-index:9999;
+            }
         </style>
+        
     </head>
     <body>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div id="secc-message">
+                <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="scene">
             <!-- Panel de marca -->
             <div class="panel-brand">
@@ -282,15 +295,15 @@
             <div class="panel-form">
                 <h2>Bienvenido de nuevo</h2>
                 <p class="sub">Ingresa tus datos para continuar.</p>
-                <form novalidate>
+                <form novalidate method="post" action="<?= base_url(route_to('admin.login.post')) ?>">
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" placeholder="tu@correo.com" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="tu@correo.com" required>
                     </div>
                     <div class="mb-2">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
                             <button class="btn btn-ghost" type="button" id="togglePass">Ver</button>
                         </div>
                     </div>
@@ -310,5 +323,6 @@
             input.type = isPass ? 'text' : 'password';
             this.textContent = isPass ? 'Ocultar' : 'Ver';
         });
+
     </script>
 </html>

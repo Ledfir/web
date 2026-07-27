@@ -1,3 +1,3 @@
 <footer class="app-footer">
-    Desarrollado por <a href="https://aflores.vercel.app" target="_blank">Aflores </a>
+    Desarrollado con ❤️ por <a class="text-decoration-none fw-bold" href="https://aflores.vercel.app" target="_blank">Aflores 💻</a>
 </footer>
