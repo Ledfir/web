@@ -13,6 +13,7 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\Auth;
+use App\Filters\VisitCounter;
 
 class Filters extends BaseFilters
 {
@@ -36,6 +37,7 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'auth'          => Auth::class,
+        'visits'        => VisitCounter::class,
     ];
 
     /**
@@ -75,6 +77,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            'visits', // Contador de visitas
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
